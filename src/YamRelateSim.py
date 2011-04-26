@@ -7,8 +7,8 @@
 import sys, httplib, simplejson, csv, time
 
 # here is the oath token, replace it with your own
-oauthToken = 'todo'
-csvFilename = 'todo.csv'
+oauthToken = 'TODO'
+csvFilename = 'TODO.csv'
 
 # time delay to prevent rate limiting
 tdelay=0
