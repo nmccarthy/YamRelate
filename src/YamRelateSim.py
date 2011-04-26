@@ -1,14 +1,11 @@
 # Created by Neil McCarthy, Implementation Engineer, Yammer, nmccarthy-inc@yammer.com
 # v0.1, 04/20/2011
 
-# yammeredge@muchomail.com -> 4876628
-# nmccarthy@muchomail.com -> 4360939
-
 import sys, httplib, simplejson, csv, time
 
-# here is the oath token, replace it with your own
-oauthToken = 'todo'
-csvFilename = 'todo.csv'
+# system arguments
+oauthToken = sys.argv[1]
+csvFilename = sys.argv[2]
 
 # time delay to prevent rate limiting
 tdelay=0

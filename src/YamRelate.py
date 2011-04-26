@@ -3,9 +3,9 @@
 
 import sys, httplib, simplejson, csv, time
 
-# here is the oath token, replace it with your own
-oauthToken = 'todo'
-csvFilename = 'todo.csv'
+# system arguments
+oauthToken = sys.argv[1]
+csvFilename = sys.argv[2]
 
 # time delay to prevent rate limiting
 tdelay=0
@@ -32,7 +32,7 @@ for row in emailList:
 	try:
 		selectedUserId = selectedUser[0]['id']
 	except IndexError:
-		print selectedEmail + ' does not exist.'
+		print(selectedEmail, ' does not exist.')
 		continue
 
 	selectedUserIdstr = str(selectedUserId)
@@ -57,7 +57,7 @@ for row in emailList:
 		try:
 			superiorId=selectedRel['superiors'][0]['id']
 		except IndexError:
-			print selectedEmail + ' has no superiors.'
+			print(selectedEmail, ' has no superiors.')
 			superiorId = 'none'
 
 		superiorIdstr=str(superiorId)
@@ -69,9 +69,9 @@ for row in emailList:
 			time.sleep(tdelay)
 			deleteTest=yamconn.getresponse()
 			if deleteTest.status == 200:
-				print selectedEmail + ': superior was removed.'
+				print(selectedEmail, ': superior was removed.')
 			else:
-				print selectedEmail + ': something went wrong. ' + str(deleteTest.status) + ' ' + str(deleteTest.reason) + '' + delEndPoint
+				print (selectedEmail, ': something went wrong. ', str(deleteTest.status), ' ', str(deleteTest.reason), '', delEndPoint)
 		yamconn.close()
 
 	yamconn.close()
